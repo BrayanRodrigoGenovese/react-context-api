@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { BudgetContext } from "../contexts/BudgetContext";
 
 export default function ProductPage() {
   const [products, setProducts] = useState([]);
+
+  const { budgetMode } = useContext(BudgetContext);
 
   useEffect(() => {
     axios
@@ -11,6 +14,10 @@ export default function ProductPage() {
       .then((response) => setProducts(response.data))
       .catch((error) => console.log("Errore API", error));
   }, []);
+
+  const selectedProducts = budgetMode
+    ? products.filter((product) => product.price <= 30)
+    : products;
 
   return (
     <div className="container page-content">
@@ -21,7 +28,7 @@ export default function ProductPage() {
         </p>
       </div>
       <div className="products-grid">
-        {products.map((product) => {
+        {selectedProducts.map((product) => {
           const [intero, centesimi] = product.price.toFixed(2).split(".");
           return (
             <Link
