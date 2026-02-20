@@ -13,7 +13,7 @@ export default function AboutPage() {
         puntiamo ad essere l’azienda più attenta al cliente al mondo, il miglior
         datore di lavoro al mondo e il luogo di lavoro più sicuro al mondo. Le
         recensioni dei clienti, lo shopping 1-Click, le raccomandazioni
-        personalizzate, la logistica, sono alcune degli aspetti importanti per
+        personalizzate, la logistica, sono alcuni degli aspetti importanti per
         noi.
       </div>
     </div>
