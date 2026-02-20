@@ -1,6 +1,10 @@
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { BudgetContext } from "../contexts/BudgetContext";
 
 export default function Navbar() {
+  const { budgetMode, setBudgetMode } = useContext(BudgetContext);
+
   return (
     <>
       <nav>
@@ -22,6 +26,9 @@ export default function Navbar() {
             </NavLink>
           </li>
         </ul>
+        <button onClick={() => setBudgetMode(!budgetMode)}>
+          {budgetMode ? "turn budget mode OFF" : "turn budget mode ON"}
+        </button>
       </nav>
     </>
   );
